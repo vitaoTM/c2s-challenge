@@ -1,0 +1,27 @@
+<h3>Clientes</h3>
+
+<table class="table table-stripes">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Email</th>
+      <th>Telefone</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @customers.each do |c| %>
+      <tr>
+        <td><% status_class = c.success? ? "bg-succsess" : (c.failure? ? "bg-danger" : "bg-secondary") %>
+        <span class="badge <%= status_class %>"><%= c.status %></span></th>
+        <td><%= c.original_filename %></td>
+        <td><% if c.success? %>
+          <small>Cliente: <%= c.customer&.name %>(<%= c.customer&.email %>)</small>
+          <% else %>
+            <small class="text-danger"><%= c.error_message %></small>
+          <% end %>
+        </td>
+        <td><%= time_ago_in_words(c.updated_at) %>atrás</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

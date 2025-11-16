@@ -1,0 +1,17 @@
+<h3>Enviar arquivo .eml</h3>
+
+<hr>
+
+<%= form_with(
+    model: @parse_log,
+    url: parse_logs_path,
+    local: true,
+    multipart: true,
+    class: "mb-3",
+  ) do |form| %>
+  <div class="mb-3">
+    <%= form.label :eml_file, "Arquivo .eml", class: "form-label" %>
+    <%= form.file_field :eml_file, class: "form-control" %>
+  </div>
+  <%= form.submit "Processar", class: "btn btn-primary" %>
+<% end %>

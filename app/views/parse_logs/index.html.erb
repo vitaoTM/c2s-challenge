@@ -1,0 +1,28 @@
+<h3>Logs de Processamento</h3>
+
+<table class="table table-stripes">
+  <thead>
+    <tr>
+      <th>Status</th>
+      <th>Arquive</th>
+      <th>Informação</th>
+      <th>Processado em</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @parse_logs.each do |log| %>
+      <tr>
+        <td><% status_class = log.success? ? "bg-succsess" : (log.failure? ? "bg-danger" : "bg-secondary") %>
+        <span class="badge <%= status_class %>"><%= log.status %></span></th>
+        <td><%= log.original_filename %></td>
+        <td><% if log.success? %>
+          <small>Cliente: <%= log.customer&.name %>(<%= log.customer&.email %>)</small>
+          <% else %>
+            <small class="text-danger"><%= log.error_message %></small>
+          <% end %>
+        </td>
+        <td><%= time_ago_in_words(log.updated_at) %>atrás</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
