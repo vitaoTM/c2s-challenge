@@ -1,15 +1,15 @@
 module Parsers
   class FornecedorAParser < BaseParser
     def self.can_parse?(mail)
-      mail.from.any? { |addr| addr.include?("fornecedora.com") }
+      mail.from.any? { |addr| addr.downcase.include?("fornecedora.com") }
     end
 
     def parse
       customer_data = {
-        name: body_text[/^Nome(?: do cliente)?: (.*)$/m, 1]&.strip,
-        email: body_text[/^E-mail: (.*)$/m, 1]&.strip,
-        phone: body_text[/^Telefone: (.*)$/m, 1]&.strip,
-        product_code: subject[/([A-Z0-9-]+)$/, 1]&.strip,
+        name: body_text[/^Nome(?: do cliente)?: (.*)$/i, 1]&.strip,
+        email: body_text[/^E-mail: (.*)$/i, 1]&.strip,
+        phone: body_text[/^Telefone: (.*)$/i, 1]&.strip,
+        product_code: subject[/([A-Z0-9-]+)$/i, 1]&.strip,
         subject: subject
       }
 
