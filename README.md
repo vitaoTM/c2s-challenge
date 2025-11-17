@@ -1,6 +1,9 @@
-# Desafio Técnico C2S 
+# Desafio Técnico C2S - Email Processer 
 
-This is a developer test created by C2S. A responsive email info extracter 
+[![CI Status](https://github.com/vitaoTM/c2s-challenge/actions/workflows/ci.yml/badge.svg)](https://github.com/vitaoTM/c2s-challenge/actions/workflows/ci.yml)
+
+
+This is a developer test created by C2S. A responsive email info extractor 
 
 Main features:
 
@@ -8,6 +11,8 @@ Main features:
 - Extract customer info from email files:
  - name, phone, product_code, email.
 - Process in background job
+
+
 
 ## Version Used in this Project
 
@@ -19,6 +24,8 @@ Main features:
 |[rails](https://guides.rubyonrails.org/)|`rails -v`|`8.0.4`|
 |[redis](https://redis.io/docs/latest/operate/oss_and_stack/install/install-redis/)/valkey|`redis-cli -v`| `valkey-cli 8.1.4` |
 |[postgreSQL](https://www.postgresql.org/download/)| `psql -V`| `17` |
+| Tests | **RSpec** | |
+| Containers | **Docker** & **docker-compose** | |
 
 </div>
 
@@ -30,6 +37,11 @@ cd c2s-challenge
 ```
 
 ### Get started with Docker
+
+What You Need to Run this app:
+- Git
+- Docker
+- Docker Compose
 
 1. Build and run the app
 
