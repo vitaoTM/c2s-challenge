@@ -1,0 +1,4 @@
+prune_old_logs:
+  cron: '0 1 * * *' # Todo dia à 1h da manhã
+  class: 'PruneOldLogsJob'
+  queue: 'low_priority'
