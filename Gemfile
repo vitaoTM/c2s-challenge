@@ -65,5 +65,6 @@ group :test do
 end
 
 gem "sidekiq", "~> 8.0"
+gem "sidekiq-cron"
 gem "rspec-rails", "~> 8.0"
 gem "mail", "~> 2.9"
