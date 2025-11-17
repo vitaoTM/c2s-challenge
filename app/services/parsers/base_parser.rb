@@ -33,7 +33,7 @@ module Parsers
         return ParserResult.new(
           success: false,
           customer_data: data,
-          error_message: "Informação de contato (email ou telefone) ausente."
+          error_message: "Informação de contato ausente."
         )
       end
 

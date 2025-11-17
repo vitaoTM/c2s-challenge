@@ -18,7 +18,7 @@ class ParseLogsController < ApplicationController
     @parse_log.eml_file.attach(file)
 
     if @parse_log.save
-      ProcessEmailJob.perform_now(@parse_log.id)
+      ProcessEmailJob.perform_later(@parse_log.id)
       redirect_to parse_logs_path, notice: "Arquivo '#{file.original_filename}' enviado para processamento."
     else
       redirect_to root_path, alert: "Erro ao salvar o arquivo."
