@@ -3,5 +3,5 @@ class ParseLog < ApplicationRecord
 
   has_one :customer
 
-  enum :status, { pending: "pending", precessing: "processing", success: "success", failure: "failure" }
+  enum :status, { pending: "pending", processing: "processing", success: "success", failure: "failure" }
 end
