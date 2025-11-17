@@ -25,7 +25,7 @@ Main features:
 ## Clone or download this repo
 
 ```
-git clone git@github.com:vitaoTM/
+git clone git@github.com:vitaoTM/c2s-challenge.git
 cd c2s-challenge
 ```
 
