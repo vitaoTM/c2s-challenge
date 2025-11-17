@@ -4,23 +4,24 @@ class ParseLogsController < ApplicationController
   end
 
   def create
-    file = params[:parse_logs][:eml_file]
+    file = params[:parse_log][:eml_file]
 
     unless file
-      redirect_to root_path, alert: "É necessário selecionar um arquivo"
+      redirect_to root_path, alert: "Você precisa selecionar um arquivo."
+      return
     end
 
-    @parse_logs = ParseLog.new(
+    @parse_log = ParseLog.new(
       status: "pending",
       original_filename: file.original_filename
     )
-    @parse_logs.eml_file.attach(file)
+    @parse_log.eml_file.attach(file)
 
-    if parse_logs.save
-      ProcessEmailJob.perform_async(@parse_logs.id)
-      redirect_to parse_logs_path, notice: "Arquivo #{file.original_filename} enviado"
+    if @parse_log.save
+      ProcessEmailJob.perform_now(@parse_log.id)
+      redirect_to parse_logs_path, notice: "Arquivo '#{file.original_filename}' enviado para processamento."
     else
-      redirect_to root_path, alert: "Erro ao salvar o arquivo"
+      redirect_to root_path, alert: "Erro ao salvar o arquivo."
     end
   end
 end
